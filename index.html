@@ -70,18 +70,22 @@
 
   <script>
     function checkPassword() {
-      const correctPassword = "sea123"; // 🔐 Set your password here
       const enteredPassword = document.getElementById("password").value.trim();
       const errorMessage = document.getElementById("error-message");
 
-      if (enteredPassword === correctPassword) {
-        // Redirect to quiz page
-        window.location.href = "https://syedxwebdev.github.io/Test/";
-        return false;
-      } else {
-        // Show error
-        errorMessage.textContent = "❌ Incorrect password. Please try again.";
+      // Define password-page pairs
+      const passwordMap = {
+        "sea123": "https://syedxwebdev.github.io/Test/",
+        "rob123": "https://syedxwebdev.github.io/Test/Asmad.html"
+        // Add more like "ali456": "link3.html"
+      };
+
+      if (passwordMap[enteredPassword]) {
+        window.location.href = passwordMap[enteredPassword];
         return false; // Prevent form submission
+      } else {
+        errorMessage.textContent = "❌ Incorrect password. Please try again.";
+        return false;
       }
     }
   </script>
